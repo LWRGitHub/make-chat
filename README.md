@@ -5,6 +5,7 @@ This is a Chat app, created to send real time messages back-and-forth without re
 - node.js
 - JavaScript
 - HTML/CSS
+- jQuery
 - npm
 - express
 - handlebars

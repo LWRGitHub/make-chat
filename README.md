@@ -18,3 +18,8 @@ This is a Chat app, created to send real time messages back-and-forth without re
 ```
 npm install
 ```
+
+## Run
+```
+nodemon
+```

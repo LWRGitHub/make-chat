@@ -1,6 +1,15 @@
 $(document).ready( () => {
   // Connect to the socket.io server
   const socket = io.connect();
+  let currentUser;
+  // Get the online users from the server
+  socket.emit('get online users');
+
+  socket.on('get online users', (onlineUsers) => {
+    for(username in onlineUsers){
+      $('.users-online').append(`<div class="user-online">${username}</div>`);
+    }
+  })
 
   $('#create-user-btn').click((e)=>{
     e.preventDefault();
@@ -45,5 +54,13 @@ $(document).ready( () => {
       </div>
     `);
   })
+
+  //Refresh the online user list
+  socket.on('user has left', (onlineUsers) => {
+    $('.users-online').empty();
+    for(username in onlineUsers){
+      $('.users-online').append(`<p>${username}</p>`);
+    }
+  });
 
 })

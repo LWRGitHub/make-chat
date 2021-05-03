@@ -1,4 +1,4 @@
-module.exports = (io, socket, onlineUsers) => {
+module.exports = (io, socket, onlineUsers, channels) => {
 
   socket.on('new user', (username) => {
     //Save the username as key to access the user's socket id

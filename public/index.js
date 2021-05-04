@@ -19,12 +19,19 @@ $(document).ready( () => {
     }
   })
 
+  socket.on('get channels', (chatRooms) => {
+    for(channel in chatRooms){
+      $('.channels').append(`<div class="channel">${channel}</div>`);
+    }
+  })
+
   $('#create-user-btn').click((e)=>{
     e.preventDefault();
-    let username = $('#username-input').val();
-    if(username.length > 0){
+    if($('#username-input').val().length > 0){
+      currentUser = $('#username-input').val();
       //Emit to the server the new user
-      socket.emit('new user', $(username).val());
+      // socket.emit('new user', $(currentUser).val());
+      socket.emit('new user', $('#username-input').val());
       $('.username-form').remove();
       //Have the main page vidible
       $('.main-container').css('display', 'flex');

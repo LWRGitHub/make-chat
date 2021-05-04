@@ -1,4 +1,4 @@
-module.exports = (io, socket, onlineUsers, channels) => {
+module.exports = (io, socket, onlineUsers, chatRooms, channels) => {
 
   socket.on('new user', (username) => {
     //Save the username as key to access the user's socket id
@@ -41,6 +41,7 @@ module.exports = (io, socket, onlineUsers, channels) => {
       channel : newChannel,
       messages : channels[newChannel]
     });
+    chatRooms = channels
   });
 
   //Have the socket join the room of the channel
